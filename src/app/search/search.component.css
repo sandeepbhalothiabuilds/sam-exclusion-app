@@ -71,26 +71,26 @@ button:hover {
 }
 
 /* Tabs container */
-.tabs {
-  display: flex;
-  justify-content: center;
+.mat-tab-group {
   margin-top: 20px;
-  margin-bottom: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.tabs button {
-  background: #003366;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  margin: 0 5px;
-  border-radius: 5px;
-  cursor: pointer;
+.mat-tab-label {
   font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #003366;
 }
 
-.tabs button.active {
-  background: #005599;
+.mat-tab-label.mat-tab-label-active {
+  color: #005599;
+}
+
+.mat-ink-bar {
+  background-color: #005599;
 }
 
 /* Scrollable container for the table */
@@ -98,7 +98,7 @@ button:hover {
   overflow-x: auto;
   max-width: 100%; /* Ensure it doesn't exceed the parent container width */
   margin-top: 15px;
-  border: 1px solid #ddd; /* Optional: Add a border to make the scrollable area distinct */
+  border: 1px solid #ddd;
   border-radius: 8px;
 }
 
@@ -133,5 +133,9 @@ button:hover {
 @media (max-width: 768px) {
   .button-row {
     text-align: center; /* Center the button on smaller screens */
+  }
+
+  .table-container {
+    overflow-x: scroll;
   }
 }

@@ -2,15 +2,18 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SearchService } from '../services/search.service';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-search',
   standalone: true,
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatTabsModule],
 })
 export class SearchComponent {
+  selectedTab = 0;
+  
   classificationOptions = ['Firm', 'Individual', 'Special Entity Designation', 'Vessel'];
   agencyOptions = [
     'AF',

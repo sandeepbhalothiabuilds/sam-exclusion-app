@@ -48,94 +48,93 @@
     </form>
   </div>  
   
-  <div *ngIf="results.primaryData || results.secondaryData" class="results">
-    <div class="tabs">
-      <button [class.active]="activeTab === 'primary'" (click)="setActiveTab('primary')">Primary Data</button>
-      <button [class.active]="activeTab === 'secondary'" (click)="setActiveTab('secondary')">Secondary Data</button>
-    </div>
+  <mat-tab-group [(selectedIndex)]="selectedTab">
+    <!-- Primary Data Tab -->
+    <mat-tab label="Primary Data">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Classification</th>
+              <th>Full Name</th>
+              <th>Alias</th>
+              <th>Full Address</th>
+              <th>Entity Type</th>
+              <th>Excluding Agency</th>
+              <th>Additional Comments</th>
+              <th>Active Date</th>
+              <th>Termination Date</th>
+              <th>Exclusion Type</th>
+              <th>Unique Entity ID</th>
+              <th>SAM Number</th>
+              <th>CAGE</th>
+              <th>Exclusion Program</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of results.primaryData">
+              <td>{{ row.classification }}</td>
+              <td>{{ row.fullName }}</td>
+              <td>{{ row.alias }}</td>
+              <td>{{ row.fullAddress }}</td>
+              <td>{{ row.entityType }}</td>
+              <td>{{ row.excludingAgency }}</td>
+              <td>{{ row.additionalComments }}</td>
+              <td>{{ row.activeDate }}</td>
+              <td>{{ row.terminationDate }}</td>
+              <td>{{ row.exclusionType }}</td>
+              <td>{{ row.uniqueEntityId }}</td>
+              <td>{{ row.samNumber }}</td>
+              <td>{{ row.cage }}</td>
+              <td>{{ row.exclusionProgram }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-tab>
   
-    <!-- Primary Data Table -->
-    <div *ngIf="activeTab === 'primary'" class="table-container">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Classification</th>
-            <th>Full Name</th>
-            <th>Alias</th>
-            <th>Full Address</th>
-            <th>Entity Type</th>
-            <th>Excluding Agency</th>
-            <th>Additional Comments</th>
-            <th>Active Date</th>
-            <th>Termination Date</th>
-            <th>Exclusion Type</th>
-            <th>Unique Entity ID</th>
-            <th>SAM Number</th>
-            <th>CAGE</th>
-            <th>Exclusion Program</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let row of results.primaryData">
-            <td>{{ row.classification }}</td>
-            <td>{{ row.fullName }}</td>
-            <td>{{ row.alias }}</td>
-            <td>{{ row.fullAddress }}</td>
-            <td>{{ row.entityType }}</td>
-            <td>{{ row.excludingAgency }}</td>
-            <td>{{ row.additionalComments }}</td>
-            <td>{{ row.activeDate }}</td>
-            <td>{{ row.terminationDate }}</td>
-            <td>{{ row.exclusionType }}</td>
-            <td>{{ row.uniqueEntityId }}</td>
-            <td>{{ row.samNumber }}</td>
-            <td>{{ row.cage }}</td>
-            <td>{{ row.exclusionProgram }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  
-    <!-- Secondary Data Table -->
-    <div *ngIf="activeTab === 'secondary'" class="table-container">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Classification</th>
-            <th>Full Name</th>
-            <th>Alias</th>
-            <th>Full Address</th>
-            <th>Entity Type</th>
-            <th>Excluding Agency</th>
-            <th>Additional Comments</th>
-            <th>Active Date</th>
-            <th>Termination Date</th>
-            <th>Exclusion Type</th>
-            <th>Unique Entity ID</th>
-            <th>SAM Number</th>
-            <th>CAGE</th>
-            <th>Exclusion Program</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let row of results.secondaryData">
-            <td>{{ row.classification }}</td>
-            <td>{{ row.fullName }}</td>
-            <td>{{ row.alias }}</td>
-            <td>{{ row.fullAddress }}</td>
-            <td>{{ row.entityType }}</td>
-            <td>{{ row.excludingAgency }}</td>
-            <td>{{ row.additionalComments }}</td>
-            <td>{{ row.activeDate }}</td>
-            <td>{{ row.terminationDate }}</td>
-            <td>{{ row.exclusionType }}</td>
-            <td>{{ row.uniqueEntityId }}</td>
-            <td>{{ row.samNumber }}</td>
-            <td>{{ row.cage }}</td>
-            <td>{{ row.exclusionProgram }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>  
+    <!-- Secondary Data Tab -->
+    <mat-tab label="Secondary Data">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Classification</th>
+              <th>Full Name</th>
+              <th>Alias</th>
+              <th>Full Address</th>
+              <th>Entity Type</th>
+              <th>Excluding Agency</th>
+              <th>Additional Comments</th>
+              <th>Active Date</th>
+              <th>Termination Date</th>
+              <th>Exclusion Type</th>
+              <th>Unique Entity ID</th>
+              <th>SAM Number</th>
+              <th>CAGE</th>
+              <th>Exclusion Program</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of results.secondaryData">
+              <td>{{ row.classification }}</td>
+              <td>{{ row.fullName }}</td>
+              <td>{{ row.alias }}</td>
+              <td>{{ row.fullAddress }}</td>
+              <td>{{ row.entityType }}</td>
+              <td>{{ row.excludingAgency }}</td>
+              <td>{{ row.additionalComments }}</td>
+              <td>{{ row.activeDate }}</td>
+              <td>{{ row.terminationDate }}</td>
+              <td>{{ row.exclusionType }}</td>
+              <td>{{ row.uniqueEntityId }}</td>
+              <td>{{ row.samNumber }}</td>
+              <td>{{ row.cage }}</td>
+              <td>{{ row.exclusionProgram }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-tab>
+  </mat-tab-group>  
   
