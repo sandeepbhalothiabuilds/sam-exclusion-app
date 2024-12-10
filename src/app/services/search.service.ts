@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SearchService {
-  private searchUrl = 'http://localhost:5001/sam/exclusion/search'; // API endpoint
+  private searchUrl = 'http://localhost:5001/sam/exclusion/search';
 
   constructor(private http: HttpClient) { }
 

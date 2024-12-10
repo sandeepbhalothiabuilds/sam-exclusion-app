@@ -1,11 +1,9 @@
-/* Apply box-sizing globally */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Container for the entire search form */
 .search-container {
   margin: 20px auto;
   max-width: 800px;
@@ -16,7 +14,6 @@
   overflow: hidden;
 }
 
-/* Align heading to the left */
 .left-heading {
   text-align: left;
   color: #003366;
@@ -25,14 +22,12 @@
   margin-bottom: 20px;
 }
 
-/* Form styles */
 .styled-form {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Add spacing between rows */
+  gap: 20px;
 }
 
-/* Input and Select fields styling */
 .form-group input,
 .form-group select {
   width: 100%;
@@ -50,9 +45,8 @@
   background-color: #ffffff;
 }
 
-/* Button styles */
 .button-row {
-  text-align: right; /* Align button to the right */
+  text-align: right;
 }
 
 button {
@@ -70,7 +64,6 @@ button:hover {
   background-color: #005599;
 }
 
-/* Tabs container */
 .mat-tab-group {
   margin-top: 20px;
   background-color: #ffffff;
@@ -93,16 +86,14 @@ button:hover {
   background-color: #005599;
 }
 
-/* Scrollable container for the table */
 .table-container {
   overflow-x: auto;
-  max-width: 100%; /* Ensure it doesn't exceed the parent container width */
+  max-width: 100%;
   margin-top: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
 }
 
-/* Table styling */
 .data-table {
   width: 100%;
   border-collapse: collapse;
@@ -129,10 +120,9 @@ button:hover {
   background-color: #eef;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .button-row {
-    text-align: center; /* Center the button on smaller screens */
+    text-align: center;
   }
 
   .table-container {

@@ -18,7 +18,7 @@ export class UploadComponent {
 
   onFileSelected(event: any) {
     if (event.target.files.length > 0) {
-      this.selectedFile = event.target.files[0]; // Get the selected file
+      this.selectedFile = event.target.files[0];
     }
   }
 
