@@ -43,7 +43,7 @@ export class SearchComponent implements AfterViewInit {
   secondaryDataSource = new MatTableDataSource<any>([]);
 
   displayedColumns: string[] = [
-    'classification', 'fullName', 'alias', 'fullAddress', 'entityType', 
+    'classification', 'fullName', 'alias', 'fullAddress', 
     'excludingAgency', 'additionalComments', 'activeDate', 'terminationDate', 
     'exclusionType', 'uniqueEntityId', 'samNumber', 'cage', 'exclusionProgram'
   ];
