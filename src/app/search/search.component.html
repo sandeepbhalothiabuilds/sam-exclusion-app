@@ -69,19 +69,18 @@
           <ng-container matColumnDef="alias">
             <th mat-header-cell *matHeaderCellDef> Alias </th>
             <td mat-cell *matCellDef="let element">
-              <span *ngFor="let alias of element.alias.split(','); let i = index">
+              <div *ngFor="let alias of element.alias.split(',')">
                 <a
                   href="javascript:void(0)"
                   (click)="onAliasClick(alias.trim())"
-                  style="color: blue; text-decoration: underline;"
+                  style="color: blue; text-decoration: underline; display: block; margin-bottom: 8px;"
                 >
                   {{ alias.trim() }}
                 </a>
-                <span *ngIf="i < element.alias.split(',').length - 1">, </span>
-              </span>
+              </div>
             </td>
-          </ng-container>                                        
-  
+          </ng-container>                      
+                                                  
           <!-- Full Address Column -->
           <ng-container matColumnDef="fullAddress">
             <th mat-header-cell *matHeaderCellDef> Full Address </th>
@@ -181,18 +180,17 @@
               <ng-container matColumnDef="alias">
                 <th mat-header-cell *matHeaderCellDef> Alias </th>
                 <td mat-cell *matCellDef="let element">
-                  <span *ngFor="let alias of element.alias.split(','); let i = index">
+                  <div *ngFor="let alias of element.alias.split(',')">
                     <a
                       href="javascript:void(0)"
                       (click)="onAliasClick(alias.trim())"
-                      style="color: blue; text-decoration: underline;"
+                      style="color: blue; text-decoration: underline; display: block; margin-bottom: 8px;"
                     >
                       {{ alias.trim() }}
                     </a>
-                    <span *ngIf="i < element.alias.split(',').length - 1">, </span>
-                  </span>
+                  </div>
                 </td>
-              </ng-container>     
+              </ng-container>                   
       
               <!-- Full Address Column -->
               <ng-container matColumnDef="fullAddress">
