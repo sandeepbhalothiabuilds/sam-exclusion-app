@@ -54,7 +54,9 @@
   
           <ng-container matColumnDef="fullName">
             <th mat-header-cell *matHeaderCellDef> Full Name </th>
-            <td mat-cell *matCellDef="let element"> {{ element.fullName }} </td>
+            <td mat-cell *matCellDef="let element" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              {{ element.fullName }}
+            </td>
           </ng-container>
   
           <ng-container matColumnDef="alias">
@@ -74,7 +76,7 @@
                                                   
           <ng-container matColumnDef="fullAddress">
             <th mat-header-cell *matHeaderCellDef> Full Address </th>
-            <td mat-cell *matCellDef="let element">
+            <td mat-cell *matCellDef="let element" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
               <a
                 href="javascript:void(0)"
                 (click)="onAddressClick(element.fullAddress)"
@@ -92,7 +94,19 @@
   
           <ng-container matColumnDef="additionalComments">
             <th mat-header-cell *matHeaderCellDef> Additional Comments </th>
-            <td mat-cell *matCellDef="let element"> {{ element.additionalComments }} </td>
+            <td mat-cell *matCellDef="let element">
+              <div>
+                <span *ngIf="!element.showFullComments">{{ element.additionalComments | slice: 0:20 }}...</span>
+                <span *ngIf="element.showFullComments">{{ element.additionalComments }}</span>
+                <a
+                  href="javascript:void(0)"
+                  (click)="toggleComments(element)"
+                  style="color: blue; text-decoration: underline; margin-left: 8px;"
+                >
+                  {{ element.showFullComments ? 'See less' : 'See more' }}
+                </a>
+              </div>
+            </td>
           </ng-container>
   
           <ng-container matColumnDef="activeDate">
@@ -153,7 +167,9 @@
       
               <ng-container matColumnDef="fullName">
                 <th mat-header-cell *matHeaderCellDef> Full Name </th>
-                <td mat-cell *matCellDef="let element"> {{ element.fullName }} </td>
+                <td mat-cell *matCellDef="let element" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                  {{ element.fullName }}
+                </td>
               </ng-container>
       
               <ng-container matColumnDef="alias">
@@ -173,7 +189,7 @@
       
               <ng-container matColumnDef="fullAddress">
                 <th mat-header-cell *matHeaderCellDef> Full Address </th>
-                <td mat-cell *matCellDef="let element">
+                <td mat-cell *matCellDef="let element" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                   <a
                     href="javascript:void(0)"
                     (click)="onAddressClick(element.fullAddress)"
@@ -191,7 +207,19 @@
       
               <ng-container matColumnDef="additionalComments">
                 <th mat-header-cell *matHeaderCellDef> Additional Comments </th>
-                <td mat-cell *matCellDef="let element"> {{ element.additionalComments }} </td>
+                <td mat-cell *matCellDef="let element">
+                  <div>
+                    <span *ngIf="!element.showFullComments">{{ element.additionalComments | slice: 0:20 }}...</span>
+                    <span *ngIf="element.showFullComments">{{ element.additionalComments }}</span>
+                    <a
+                      href="javascript:void(0)"
+                      (click)="toggleComments(element)"
+                      style="color: blue; text-decoration: underline; margin-left: 8px;"
+                    >
+                      {{ element.showFullComments ? 'See less' : 'See more' }}
+                    </a>
+                  </div>
+                </td>
               </ng-container>
       
               <ng-container matColumnDef="activeDate">

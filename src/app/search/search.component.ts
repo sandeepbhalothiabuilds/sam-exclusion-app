@@ -67,6 +67,10 @@ export class SearchComponent implements AfterViewInit {
     this.searchCriteria.address = address;
     this.onSearch();
   }
+
+  toggleComments(element: any): void {
+    element.showFullComments = !element.showFullComments;
+  }  
   
   onSearch() {  
     this.searchService.search(this.searchCriteria).subscribe(
