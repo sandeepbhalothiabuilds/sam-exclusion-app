@@ -1,34 +1,141 @@
-<div>
-    <h2>Search</h2>
-    <form (ngSubmit)="onSearch()">
-      <label for="classification">Classification:</label>
-      <select [(ngModel)]="searchCriteria.classification" name="classification">
-        <option *ngFor="let option of classificationOptions" [value]="option">{{ option }}</option>
-      </select>
-  
-      <label for="name">Name:</label>
-      <input type="text" [(ngModel)]="searchCriteria.name" name="name" />
-  
-      <label for="address">Address:</label>
-      <input type="text" [(ngModel)]="searchCriteria.address" name="address" />
-  
-      <label for="agency">Excluding Agency:</label>
-      <select [(ngModel)]="searchCriteria.excludingAgency" name="agency">
-        <option *ngFor="let option of agencyOptions" [value]="option">{{ option }}</option>
-      </select>
-  
-      <button type="submit">Search</button>
-    </form>
-  
-    <div *ngIf="results.primaryData" class="results">
-      <h3>Results</h3>
-      <div *ngFor="let result of results.primaryData">
-        <p><strong>Name:</strong> {{ result.Name }}</p>
-        <p><strong>Classification:</strong> {{ result.Classification }}</p>
-        <p><strong>Address:</strong> {{ result.Address }}</p>
-        <p><strong>Excluding Agency:</strong> {{ result.ExcludingAgency }}</p>
-        <p><strong>Aliases:</strong> {{ result.Alias.join(', ') }}</p>
+<div class="search-container">
+    <h2 class="left-heading">Search</h2>
+    <form (ngSubmit)="onSearch()" class="styled-form">
+      <!-- Name Field -->
+      <div class="form-group">
+        <input
+          type="text"
+          [(ngModel)]="searchCriteria.name"
+          name="name"
+          placeholder="Enter Name"
+        />
       </div>
+  
+      <!-- Classification Field -->
+      <div class="form-group">
+        <select [(ngModel)]="searchCriteria.classification" name="classification">
+          <option value="" disabled selected>Select Classification</option>
+          <option *ngFor="let option of classificationOptions" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+      </div>
+  
+      <!-- Address Field -->
+      <div class="form-group">
+        <input
+          type="text"
+          [(ngModel)]="searchCriteria.address"
+          name="address"
+          placeholder="Enter Address"
+        />
+      </div>
+  
+      <!-- Excluding Agency Field -->
+      <div class="form-group">
+        <select [(ngModel)]="searchCriteria.excludingAgency" name="excludingAgency">
+          <option value="" disabled selected>Select Excluding Agency</option>
+          <option *ngFor="let option of agencyOptions" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+      </div>
+  
+      <!-- Search Button -->
+      <div class="button-row">
+        <button type="submit">Search</button>
+      </div>
+    </form>
+  </div>  
+  
+  <div *ngIf="results.primaryData || results.secondaryData" class="results">
+    <div class="tabs">
+      <button [class.active]="activeTab === 'primary'" (click)="setActiveTab('primary')">Primary Data</button>
+      <button [class.active]="activeTab === 'secondary'" (click)="setActiveTab('secondary')">Secondary Data</button>
     </div>
-  </div>
+  
+    <!-- Primary Data Table -->
+    <div *ngIf="activeTab === 'primary'" class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Classification</th>
+            <th>Full Name</th>
+            <th>Alias</th>
+            <th>Full Address</th>
+            <th>Entity Type</th>
+            <th>Excluding Agency</th>
+            <th>Additional Comments</th>
+            <th>Active Date</th>
+            <th>Termination Date</th>
+            <th>Exclusion Type</th>
+            <th>Unique Entity ID</th>
+            <th>SAM Number</th>
+            <th>CAGE</th>
+            <th>Exclusion Program</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of results.primaryData">
+            <td>{{ row.classification }}</td>
+            <td>{{ row.fullName }}</td>
+            <td>{{ row.alias }}</td>
+            <td>{{ row.fullAddress }}</td>
+            <td>{{ row.entityType }}</td>
+            <td>{{ row.excludingAgency }}</td>
+            <td>{{ row.additionalComments }}</td>
+            <td>{{ row.activeDate }}</td>
+            <td>{{ row.terminationDate }}</td>
+            <td>{{ row.exclusionType }}</td>
+            <td>{{ row.uniqueEntityId }}</td>
+            <td>{{ row.samNumber }}</td>
+            <td>{{ row.cage }}</td>
+            <td>{{ row.exclusionProgram }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Secondary Data Table -->
+    <div *ngIf="activeTab === 'secondary'" class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Classification</th>
+            <th>Full Name</th>
+            <th>Alias</th>
+            <th>Full Address</th>
+            <th>Entity Type</th>
+            <th>Excluding Agency</th>
+            <th>Additional Comments</th>
+            <th>Active Date</th>
+            <th>Termination Date</th>
+            <th>Exclusion Type</th>
+            <th>Unique Entity ID</th>
+            <th>SAM Number</th>
+            <th>CAGE</th>
+            <th>Exclusion Program</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of results.secondaryData">
+            <td>{{ row.classification }}</td>
+            <td>{{ row.fullName }}</td>
+            <td>{{ row.alias }}</td>
+            <td>{{ row.fullAddress }}</td>
+            <td>{{ row.entityType }}</td>
+            <td>{{ row.excludingAgency }}</td>
+            <td>{{ row.additionalComments }}</td>
+            <td>{{ row.activeDate }}</td>
+            <td>{{ row.terminationDate }}</td>
+            <td>{{ row.exclusionType }}</td>
+            <td>{{ row.uniqueEntityId }}</td>
+            <td>{{ row.samNumber }}</td>
+            <td>{{ row.cage }}</td>
+            <td>{{ row.exclusionProgram }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>  
   
