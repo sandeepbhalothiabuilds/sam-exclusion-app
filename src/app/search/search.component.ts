@@ -59,14 +59,16 @@ export class SearchComponent implements AfterViewInit {
   }
 
   onAliasClick(alias: string) {
-    console.log('Clicked alias:', alias); 
     this.searchCriteria.name = alias;
     this.onSearch();
   }
+
+  onAddressClick(address: string) {
+    this.searchCriteria.address = address;
+    this.onSearch();
+  }
   
-  onSearch() {
-    console.log('Search triggered with criteria:', this.searchCriteria);
-  
+  onSearch() {  
     this.searchService.search(this.searchCriteria).subscribe(
       (response) => {
         this.primaryDataSource.data = response.primaryData || [];

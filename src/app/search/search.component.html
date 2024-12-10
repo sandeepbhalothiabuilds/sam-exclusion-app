@@ -74,7 +74,15 @@
                                                   
           <ng-container matColumnDef="fullAddress">
             <th mat-header-cell *matHeaderCellDef> Full Address </th>
-            <td mat-cell *matCellDef="let element"> {{ element.fullAddress }} </td>
+            <td mat-cell *matCellDef="let element">
+              <a
+                href="javascript:void(0)"
+                (click)="onAddressClick(element.fullAddress)"
+                style="color: blue; text-decoration: underline;"
+              >
+                {{ element.fullAddress }}
+              </a>
+            </td>
           </ng-container>
   
           <ng-container matColumnDef="entityType">
@@ -170,7 +178,15 @@
       
               <ng-container matColumnDef="fullAddress">
                 <th mat-header-cell *matHeaderCellDef> Full Address </th>
-                <td mat-cell *matCellDef="let element"> {{ element.fullAddress }} </td>
+                <td mat-cell *matCellDef="let element">
+                  <a
+                    href="javascript:void(0)"
+                    (click)="onAddressClick(element.fullAddress)"
+                    style="color: blue; text-decoration: underline;"
+                  >
+                    {{ element.fullAddress }}
+                  </a>
+                </td>
               </ng-container>
       
               <ng-container matColumnDef="entityType">
