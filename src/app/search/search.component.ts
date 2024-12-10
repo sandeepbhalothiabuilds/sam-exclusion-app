@@ -60,11 +60,17 @@ export class SearchComponent implements AfterViewInit {
 
   onAliasClick(alias: string) {
     this.searchCriteria.name = alias;
+    if (this.selectedTab === 1) {
+      this.selectedTab = 0;
+    }
     this.onSearch();
   }
 
   onAddressClick(address: string) {
     this.searchCriteria.address = address;
+    if (this.selectedTab === 1) {
+      this.selectedTab = 0;
+    }
     this.onSearch();
   }
 
