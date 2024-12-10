@@ -12,11 +12,16 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
   standalone: true,
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  imports: [CommonModule, FormsModule, MatTabsModule, MatTableModule, MatPaginatorModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatTabsModule,
+    MatTableModule,
+    MatPaginatorModule,
+  ],
 })
 export class SearchComponent implements AfterViewInit {
   selectedTab = 0;
-  activeTab: string = 'primary';
 
   classificationOptions = ['Firm', 'Individual', 'Special Entity Designation', 'Vessel'];
   agencyOptions = [
@@ -53,7 +58,15 @@ export class SearchComponent implements AfterViewInit {
     this.secondaryDataSource.paginator = this.secondaryPaginator;
   }
 
+  onAliasClick(alias: string) {
+    console.log('Clicked alias:', alias); // Log the clicked alias for debugging
+    this.searchCriteria.name = alias; // Update search criteria with the clicked alias
+    this.onSearch(); // Call the search function with the updated criteria
+  }
+  
   onSearch() {
+    console.log('Search triggered with criteria:', this.searchCriteria); // Debugging
+  
     this.searchService.search(this.searchCriteria).subscribe(
       (response) => {
         this.primaryDataSource.data = response.primaryData || [];
@@ -63,10 +76,5 @@ export class SearchComponent implements AfterViewInit {
         console.error('Error fetching search results:', error);
       }
     );
-  }
-
-  // Set the active tab
-  setActiveTab(tab: string) {
-    this.activeTab = tab;
-  }
+  }      
 }

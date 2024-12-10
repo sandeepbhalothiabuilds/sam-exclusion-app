@@ -68,8 +68,19 @@
           <!-- Alias Column -->
           <ng-container matColumnDef="alias">
             <th mat-header-cell *matHeaderCellDef> Alias </th>
-            <td mat-cell *matCellDef="let element"> {{ element.alias }} </td>
-          </ng-container>
+            <td mat-cell *matCellDef="let element">
+              <span *ngFor="let alias of element.alias.split(','); let i = index">
+                <a
+                  href="javascript:void(0)"
+                  (click)="onAliasClick(alias.trim())"
+                  style="color: blue; text-decoration: underline;"
+                >
+                  {{ alias.trim() }}
+                </a>
+                <span *ngIf="i < element.alias.split(',').length - 1">, </span>
+              </span>
+            </td>
+          </ng-container>                                        
   
           <!-- Full Address Column -->
           <ng-container matColumnDef="fullAddress">
@@ -141,7 +152,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
   
-        <!-- Pagination for Primary Data -->
+        <!-- Pagination -->
         <mat-paginator
           #primaryPaginator
           [pageSize]="10"
@@ -155,95 +166,105 @@
     <mat-tab label="Secondary Data">
       <div class="table-container">
         <table mat-table [dataSource]="secondaryDataSource" class="data-table">
+            <ng-container matColumnDef="classification">
+                <th mat-header-cell *matHeaderCellDef> Classification </th>
+                <td mat-cell *matCellDef="let element"> {{ element.classification }} </td>
+              </ng-container>
+      
+              <!-- Full Name Column -->
+              <ng-container matColumnDef="fullName">
+                <th mat-header-cell *matHeaderCellDef> Full Name </th>
+                <td mat-cell *matCellDef="let element"> {{ element.fullName }} </td>
+              </ng-container>
+      
+              <!-- Alias Column -->
+              <ng-container matColumnDef="alias">
+                <th mat-header-cell *matHeaderCellDef> Alias </th>
+                <td mat-cell *matCellDef="let element">
+                  <span *ngFor="let alias of element.alias.split(','); let i = index">
+                    <a
+                      href="javascript:void(0)"
+                      (click)="onAliasClick(alias.trim())"
+                      style="color: blue; text-decoration: underline;"
+                    >
+                      {{ alias.trim() }}
+                    </a>
+                    <span *ngIf="i < element.alias.split(',').length - 1">, </span>
+                  </span>
+                </td>
+              </ng-container>     
+      
+              <!-- Full Address Column -->
+              <ng-container matColumnDef="fullAddress">
+                <th mat-header-cell *matHeaderCellDef> Full Address </th>
+                <td mat-cell *matCellDef="let element"> {{ element.fullAddress }} </td>
+              </ng-container>
+      
+              <!-- Entity Type Column -->
+              <ng-container matColumnDef="entityType">
+                <th mat-header-cell *matHeaderCellDef> Entity Type </th>
+                <td mat-cell *matCellDef="let element"> {{ element.entityType }} </td>
+              </ng-container>
+      
+              <!-- Excluding Agency Column -->
+              <ng-container matColumnDef="excludingAgency">
+                <th mat-header-cell *matHeaderCellDef> Excluding Agency </th>
+                <td mat-cell *matCellDef="let element"> {{ element.excludingAgency }} </td>
+              </ng-container>
+      
+              <!-- Additional Comments Column -->
+              <ng-container matColumnDef="additionalComments">
+                <th mat-header-cell *matHeaderCellDef> Additional Comments </th>
+                <td mat-cell *matCellDef="let element"> {{ element.additionalComments }} </td>
+              </ng-container>
+      
+              <!-- Active Date Column -->
+              <ng-container matColumnDef="activeDate">
+                <th mat-header-cell *matHeaderCellDef> Active Date </th>
+                <td mat-cell *matCellDef="let element"> {{ element.activeDate }} </td>
+              </ng-container>
+      
+              <!-- Termination Date Column -->
+              <ng-container matColumnDef="terminationDate">
+                <th mat-header-cell *matHeaderCellDef> Termination Date </th>
+                <td mat-cell *matCellDef="let element"> {{ element.terminationDate }} </td>
+              </ng-container>
+      
+              <!-- Exclusion Type Column -->
+              <ng-container matColumnDef="exclusionType">
+                <th mat-header-cell *matHeaderCellDef> Exclusion Type </th>
+                <td mat-cell *matCellDef="let element"> {{ element.exclusionType }} </td>
+              </ng-container>
+      
+              <!-- Unique Entity ID Column -->
+              <ng-container matColumnDef="uniqueEntityId">
+                <th mat-header-cell *matHeaderCellDef> Unique Entity ID </th>
+                <td mat-cell *matCellDef="let element"> {{ element.uniqueEntityId }} </td>
+              </ng-container>
+      
+              <!-- SAM Number Column -->
+              <ng-container matColumnDef="samNumber">
+                <th mat-header-cell *matHeaderCellDef> SAM Number </th>
+                <td mat-cell *matCellDef="let element"> {{ element.samNumber }} </td>
+              </ng-container>
+      
+              <!-- CAGE Column -->
+              <ng-container matColumnDef="cage">
+                <th mat-header-cell *matHeaderCellDef> CAGE </th>
+                <td mat-cell *matCellDef="let element"> {{ element.cage }} </td>
+              </ng-container>
+      
+              <!-- Exclusion Program Column -->
+              <ng-container matColumnDef="exclusionProgram">
+                <th mat-header-cell *matHeaderCellDef> Exclusion Program </th>
+                <td mat-cell *matCellDef="let element"> {{ element.exclusionProgram }} </td>
+              </ng-container>
 
-            <!-- Classification Column -->
-          <ng-container matColumnDef="classification">
-            <th mat-header-cell *matHeaderCellDef> Classification </th>
-            <td mat-cell *matCellDef="let element"> {{ element.classification }} </td>
-          </ng-container>
-  
-          <!-- Full Name Column -->
-          <ng-container matColumnDef="fullName">
-            <th mat-header-cell *matHeaderCellDef> Full Name </th>
-            <td mat-cell *matCellDef="let element"> {{ element.fullName }} </td>
-          </ng-container>
-  
-          <!-- Alias Column -->
-          <ng-container matColumnDef="alias">
-            <th mat-header-cell *matHeaderCellDef> Alias </th>
-            <td mat-cell *matCellDef="let element"> {{ element.alias }} </td>
-          </ng-container>
-  
-          <!-- Full Address Column -->
-          <ng-container matColumnDef="fullAddress">
-            <th mat-header-cell *matHeaderCellDef> Full Address </th>
-            <td mat-cell *matCellDef="let element"> {{ element.fullAddress }} </td>
-          </ng-container>
-  
-          <!-- Entity Type Column -->
-          <ng-container matColumnDef="entityType">
-            <th mat-header-cell *matHeaderCellDef> Entity Type </th>
-            <td mat-cell *matCellDef="let element"> {{ element.entityType }} </td>
-          </ng-container>
-  
-          <!-- Excluding Agency Column -->
-          <ng-container matColumnDef="excludingAgency">
-            <th mat-header-cell *matHeaderCellDef> Excluding Agency </th>
-            <td mat-cell *matCellDef="let element"> {{ element.excludingAgency }} </td>
-          </ng-container>
-  
-          <!-- Additional Comments Column -->
-          <ng-container matColumnDef="additionalComments">
-            <th mat-header-cell *matHeaderCellDef> Additional Comments </th>
-            <td mat-cell *matCellDef="let element"> {{ element.additionalComments }} </td>
-          </ng-container>
-  
-          <!-- Active Date Column -->
-          <ng-container matColumnDef="activeDate">
-            <th mat-header-cell *matHeaderCellDef> Active Date </th>
-            <td mat-cell *matCellDef="let element"> {{ element.activeDate }} </td>
-          </ng-container>
-  
-          <!-- Termination Date Column -->
-          <ng-container matColumnDef="terminationDate">
-            <th mat-header-cell *matHeaderCellDef> Termination Date </th>
-            <td mat-cell *matCellDef="let element"> {{ element.terminationDate }} </td>
-          </ng-container>
-  
-          <!-- Exclusion Type Column -->
-          <ng-container matColumnDef="exclusionType">
-            <th mat-header-cell *matHeaderCellDef> Exclusion Type </th>
-            <td mat-cell *matCellDef="let element"> {{ element.exclusionType }} </td>
-          </ng-container>
-  
-          <!-- Unique Entity ID Column -->
-          <ng-container matColumnDef="uniqueEntityId">
-            <th mat-header-cell *matHeaderCellDef> Unique Entity ID </th>
-            <td mat-cell *matCellDef="let element"> {{ element.uniqueEntityId }} </td>
-          </ng-container>
-  
-          <!-- SAM Number Column -->
-          <ng-container matColumnDef="samNumber">
-            <th mat-header-cell *matHeaderCellDef> SAM Number </th>
-            <td mat-cell *matCellDef="let element"> {{ element.samNumber }} </td>
-          </ng-container>
-  
-          <!-- CAGE Column -->
-          <ng-container matColumnDef="cage">
-            <th mat-header-cell *matHeaderCellDef> CAGE </th>
-            <td mat-cell *matCellDef="let element"> {{ element.cage }} </td>
-          </ng-container>
-  
-          <!-- Exclusion Program Column -->
-          <ng-container matColumnDef="exclusionProgram">
-            <th mat-header-cell *matHeaderCellDef> Exclusion Program </th>
-            <td mat-cell *matCellDef="let element"> {{ element.exclusionProgram }} </td>
-          </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
   
-        <!-- Pagination for Secondary Data -->
+        <!-- Pagination -->
         <mat-paginator
           #secondaryPaginator
           [pageSize]="10"
