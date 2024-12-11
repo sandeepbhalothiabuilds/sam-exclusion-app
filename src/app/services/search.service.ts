@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SearchService {
-  private searchUrl = 'http://ec2-34-224-91-141.compute-1.amazonaws.com:5001/sam/exclusion/search';
+  private searchUrl = 'http://ec2-54-87-148-95.compute-1.amazonaws.com:5001/sam/exclusion/search';
 
   constructor(private http: HttpClient) { }
 
